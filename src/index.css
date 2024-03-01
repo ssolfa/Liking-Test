@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "NPSfont_regular";
+  font-weight: normal;
+  src: url("./Fonts/NPSfont_regular.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+  font-family: "NPSfont_regular";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*{
+  font-family: "NPSfont_regular";
+}
