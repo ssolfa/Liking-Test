@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
+import { QuizProvider } from 'Pages/quiz/QuizContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RecoilRoot>
+  <QuizProvider>
     <App />
-  </RecoilRoot>
+  </QuizProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

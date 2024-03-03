@@ -10,6 +10,7 @@ export const QuizProvider = ({ children }) => {
     quiz2: '',
     quiz3: '',
     quiz4: '',
+    result: '',
   });
 
   const setQuizItem = (quizId, item) => {

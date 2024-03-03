@@ -4,16 +4,22 @@ import { useRecoilState } from 'recoil'; // Recoil의 상태 훅 import
 import { quizState } from 'Pages/recoil/atom'; // Recoil의 상태 import
 import { Wrapper, Square, Count, Progress, QText, SelectButton } from 'Styles/styles';
 import square from 'Images/main/Rectangle 4.svg';
+import { useQuizContext } from './QuizContext';
 
 export default function Quiz1(){
   const navigate = useNavigate();
-  const [selectedItem, setSelectedItem] = useRecoilState(quizState); // Recoil의 상태 훅 사용
+ // const [selectedItem, setSelectedItem] = useRecoilState(quizState); // Recoil의 상태 훅 사용
+  const { setQuizItem } = useQuizContext();
 
+  // const goQuiz = (selectedItem) => {
+  //   setSelectedItem(prevItems => ({
+  //     ...prevItems,
+  //     quiz1: selectedItem
+  //   })); // Recoil의 상태 업데이트 함수 사용
+  //   navigate("/quiz2");
+  // };
   const goQuiz = (selectedItem) => {
-    setSelectedItem(prevItems => ({
-      ...prevItems,
-      quiz1: selectedItem
-    })); // Recoil의 상태 업데이트 함수 사용
+    setQuizItem('quiz1', selectedItem); 
     navigate("/quiz2");
   };
 

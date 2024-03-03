@@ -8,6 +8,7 @@ import result1 from 'Images/result/result1.svg';
 import result2 from 'Images/result/result2.svg';
 import result3 from 'Images/result/result3.svg';
 import result4 from 'Images/result/result4.svg';
+import { useQuizContext } from 'Pages/quiz/QuizContext';
 
 export default function Result() {
     useEffect(() => {
@@ -23,7 +24,8 @@ export default function Result() {
         };
       }, []);
     
-    const quizResult = useRecoilValue(quizState); // Recoil의 상태 값 읽어오기
+    //const quizResult = useRecoilValue(quizState); // Recoil의 상태 값 읽어오기
+    const {selectedItem} = useQuizContext();
     const navigate = useNavigate();
 
     const shareKakao = () => {
@@ -40,19 +42,44 @@ export default function Result() {
 
     let backgroundImage, result, data1, data2;
 
-    if ((quizResult && quizResult['quiz1'] === '고양이' )||quizResult['result'] === '솔냥이') {
+    if ((selectedItem && selectedItem['quiz1'] === '고양이' )) {
         result = RData.find(item => item.data1 === '솔냥이');
         data1 = result.data1;
         data2 = result.data2;
         backgroundImage = result4;
     } 
-    else if((quizResult && quizResult['quiz3'] === '풀메' && quizResult['quiz4'] === '웨이브') || quizResult['result'] === '공주') {
+    else if((selectedItem && selectedItem['quiz3'] === '풀메' && selectedItem['quiz4'] === '웨이브')) {
         result = RData.find(item => item.data1 === '공주 솔미');
         data1 = result.data1;
         data2 = result.data2;
         backgroundImage = result1;
     }
-    else if((quizResult && quizResult['quiz3'] === '쌩얼' && quizResult['quiz2'] === '졸미') || quizResult['result'] === '애기') {
+    else if((selectedItem && selectedItem['quiz3'] === '쌩얼' && selectedItem['quiz2'] === '졸미')) {
+        result = RData.find(item => item.data1 === '애기 솔미');
+        data1 = result.data1;
+        data2 = result.data2;
+        backgroundImage = result3;
+    }
+    else {
+        result = RData.find(item => item.data1 === '여친 솔미');
+        data1 = result.data1;
+        data2 = result.data2;
+        backgroundImage = result2;
+    }
+//
+    if (selectedItem['result'] === '솔냥이') {
+        result = RData.find(item => item.data1 === '솔냥이');
+        data1 = result.data1;
+        data2 = result.data2;
+        backgroundImage = result4;
+    } 
+    else if(selectedItem['result'] === '공주') {
+        result = RData.find(item => item.data1 === '공주 솔미');
+        data1 = result.data1;
+        data2 = result.data2;
+        backgroundImage = result1;
+    }
+    else if(selectedItem['result'] === '애기') {
         result = RData.find(item => item.data1 === '애기 솔미');
         data1 = result.data1;
         data2 = result.data2;
